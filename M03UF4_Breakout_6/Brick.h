@@ -9,7 +9,7 @@ private:
 public:
 
 	Brick();
-	Brick(int h, Vector2 pos) { health = h; position = pos; }
+	Brick(int h, Vector2 pos, char c) { health = h; position = pos; symbol = c; }
 	Vector2 GetPosition() { return position; }
 	int GetHealth() { return health; }
 	void Render();

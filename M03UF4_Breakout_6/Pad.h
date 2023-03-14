@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Wall.h"
 
 class Pad {
 private:
@@ -8,10 +9,10 @@ private:
 	char symbol;
 public:
 	Pad();
-	Pad(int w, Vector2 pos) { width = w; position = pos; }
+	Pad(int w, Vector2 pos, char c) { width = w; position = pos; symbol = c; }
 	Vector2 GetPosition() { return position; }
 	void Render();
-	void Update();
+	void Update(Wall walls[]);
 	void MoveLeft();
 	void MoveRight();
 };
