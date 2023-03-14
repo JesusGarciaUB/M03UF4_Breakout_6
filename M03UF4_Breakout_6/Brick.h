@@ -5,6 +5,7 @@ class Brick {
 private:
 	Vector2 position;
 	int health;
+	char symbol;
 public:
 
 	Brick();

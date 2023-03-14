@@ -5,6 +5,7 @@ class Pad {
 private:
 	Vector2 position;
 	int width;
+	char symbol;
 public:
 	Pad();
 	Pad(int w, Vector2 pos) { width = w; position = pos; }
