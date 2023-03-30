@@ -1,7 +1,5 @@
 #include "GameManager.h"
 
-using namespace std;
-
 void GameManager::Update()
 {
 	switch (currentScene)

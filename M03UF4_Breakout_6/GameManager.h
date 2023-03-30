@@ -7,6 +7,8 @@
 #include "Brick.h"
 #include "Pad.h"
 
+using namespace std;
+
 class GameManager {
 private:
 	void Menu();

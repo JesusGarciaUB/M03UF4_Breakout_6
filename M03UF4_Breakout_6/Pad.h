@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Wall.h"
+#include "ConsoleControl.h"
 
 class Pad {
 private:
