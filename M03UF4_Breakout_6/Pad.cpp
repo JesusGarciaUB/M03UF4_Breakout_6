@@ -6,6 +6,7 @@ Pad::Pad()
 
 void Pad::Render()
 {
+
 }
 
 void Pad::Update(Wall walls[])
