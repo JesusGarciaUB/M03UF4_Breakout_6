@@ -44,15 +44,12 @@ void GameManager::Gameplay()
 	vector<Wall> walls;
 	vector<Brick> bricks;
 
-	InitGameplay(15, 25, playerPad, ball, walls, bricks);
+	InitGameplay(15, 25, &playerPad, &ball, walls, bricks);
 
 	//--Update
 	while (gameplayRunning)
 	{
 		playerPad->Render();
-
-
-		cout << "Gameplay" << endl;
 		Sleep(sleepTime);
 		system("cls");
 	}
@@ -60,9 +57,22 @@ void GameManager::Gameplay()
 	//--End
 }
 
-void GameManager::InitGameplay(int width, int height, Pad* p, Ball* b, vector<Wall>& w, vector<Brick>& br)
+void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br)
 {
-	p = new Pad(3, Vector2(width / 2, height / 2 + height / 4),'-');
+	*p = new Pad(3, Vector2(width / 2, height / 2 + height / 4),'-');
+	w.push_back(Wall(CORNER, Vector2(0, 0), 'W'));
+	w.push_back(Wall(CORNER, Vector2(0, width), 'W'));
+	w.push_back(Wall(CORNER, Vector2(height, 0), 'W'));
+	w.push_back(Wall(CORNER, Vector2(height, width), 'W'));
+	for (int x = 1; x < width - 1; x++) {
+		w.push_back(Wall(HORIZONTAL, Vector2(0, x), 'W'));
+	}
+	for (int x = 1; x < height - 1; x++) {
+		w.push_back(Wall(VERTICAL, Vector2(x, 0), 'W'));
+		w.push_back(Wall(VERTICAL, Vector2(x, width), 'W'));
+	}
+
+	//*b = new Ball(Vector2(), Vector2(), 1, 'o');
 }
 
 void GameManager::Highscore()

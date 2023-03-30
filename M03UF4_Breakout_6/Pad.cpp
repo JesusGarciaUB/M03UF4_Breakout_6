@@ -6,11 +6,11 @@ Pad::Pad()
 
 void Pad::Render()
 {
-	ConsoleXY(position.x, position.y);
-
-	ConsoleSetColor(ConsoleColor::CYAN, ConsoleColor::BLACK);
-
-	std::cout << symbol;
+	for (int x = -width; x <= width; x++) {
+		ConsoleXY(position.x + x, position.y);
+		ConsoleSetColor(ConsoleColor::CYAN, ConsoleColor::BLACK);
+		std::cout << symbol;
+	}
 }
 
 void Pad::Update(Wall walls[])

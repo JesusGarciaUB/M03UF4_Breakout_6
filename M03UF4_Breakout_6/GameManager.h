@@ -14,7 +14,7 @@ private:
 	void Menu();
 
 	void Gameplay();
-	void InitGameplay(int width, int height, Pad* p, Ball* b, vector<Wall>& w, vector<Brick>& br);
+	void InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br);
 
 	void Highscore();
 public:
