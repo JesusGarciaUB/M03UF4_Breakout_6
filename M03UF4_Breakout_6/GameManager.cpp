@@ -44,7 +44,7 @@ void GameManager::Gameplay()
 	vector<Wall> walls;
 	vector<Brick> bricks;
 
-	InitGameplay(16, 26, &playerPad, &ball, walls, bricks);
+	InitGameplay(15, 26, &playerPad, &ball, walls, bricks);
 
 	//--Update
 	while (gameplayRunning)
