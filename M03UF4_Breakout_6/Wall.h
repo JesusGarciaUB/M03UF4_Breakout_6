@@ -1,7 +1,12 @@
 #pragma once
+#include <iostream>
+
 #include "Vector2.h"
+#include "ConsoleControl.h"
 
 enum WallType {HORIZONTAL, VERTICAL, CORNER};
+
+using namespace std;
 
 class Wall {
 private:
