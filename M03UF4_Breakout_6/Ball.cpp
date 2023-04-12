@@ -57,12 +57,13 @@ void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 	}
 
 	//Check bricks
-	for (auto it = bricks.begin(); it != bricks.end(); it++)
+	for (auto it = bricks.begin(); it != bricks.end(); ++it)
 	{
 		if (it->GetPosition() == targetPos)
 		{
 			direction.y *= -1;
-			bricks.erase(it);
+			bricks.erase(bricks.begin() + 3);
+			bricks.resize(bricks.size() - 1);
 			it--;
 		}
 	}
