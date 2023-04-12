@@ -8,10 +8,6 @@ void Ball::Bounce(Vector2 normal)
 {
 }
 
-void Ball::Update(Wall walls[], Brick bricks[], Pad pads[])
-{
-}
-
 void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
 {
 	Vector2 targetPos = position + direction;
@@ -24,10 +20,10 @@ void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
 			switch (it->GetType())
 			{
 			case HORIZONTAL:
-				direction.y *= -1;
+				direction.x *= -1;
 				break;
 			case VERTICAL:
-				direction.x *= -1;
+				direction.y *= -1;
 				break;
 			case CORNER:
 				direction.x *= -1;
@@ -35,6 +31,13 @@ void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
 				break;
 			}
 		}
+	}
+
+	//Check pads
+	//Falta comprobar els costats de les pales
+	if (pads->GetPosition() == targetPos)
+	{
+		direction.y *= -1;
 	}
 
 	position = position + direction;

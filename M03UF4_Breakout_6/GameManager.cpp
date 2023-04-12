@@ -44,7 +44,7 @@ void GameManager::Gameplay()
 	vector<Wall> walls;
 	vector<Brick> bricks;
 
-	InitGameplay(15, 26, &playerPad, &ball, walls, bricks);
+	InitGameplay(18, 25, &playerPad, &ball, walls, bricks);
 
 	//--Update
 	while (gameplayRunning)
@@ -79,14 +79,14 @@ void GameManager::Gameplay()
 void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br)
 {
 	//PAD
-	*p = new Pad(3, Vector2(height / 2, width / 2 + width / 3),'-');
+	*p = new Pad(1, Vector2(height / 2, width / 2 + width / 3),'-');
 
 	//WALLS
 	w.push_back(Wall(CORNER, Vector2(0, 0), '#'));
 	w.push_back(Wall(CORNER, Vector2(0, width), '#'));
 	w.push_back(Wall(CORNER, Vector2(height, 0), '#'));
 	w.push_back(Wall(CORNER, Vector2(height, width), '#'));
-	for (int x = 1; x < width - 1; x++) {
+	for (int x = 1; x < width; x++) {
 		w.push_back(Wall(HORIZONTAL, Vector2(0, x), '|'));
 		w.push_back(Wall(HORIZONTAL, Vector2(height, x), '|'));
 	}
