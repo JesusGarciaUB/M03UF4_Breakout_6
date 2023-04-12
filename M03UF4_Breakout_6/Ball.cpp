@@ -40,6 +40,29 @@ void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
 		direction.y *= -1;
 	}
 
+	for (int x = 0; x < pads->GetWidth(); x++) {
+		if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y - (x + 1) == targetPos.y) {
+			direction.y *= -1;
+			direction.x = -1;
+		}
+
+		if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y + (x + 1) == targetPos.y) {
+			direction.y *= -1;
+			direction.x = 1;
+		}
+	}
+
+	/*
+	if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y - 1 == targetPos.y) {
+		direction.y *= -1;
+		direction.x = -1;
+	}
+
+	if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y + 1 == targetPos.y) {
+		direction.y *= -1;
+		direction.x = 1;
+	}*/
+
 	position = position + direction;
 }
 

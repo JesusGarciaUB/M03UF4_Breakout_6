@@ -18,4 +18,5 @@ public:
 	void Update(int ScreenWidth);
 	void MoveLeft();
 	void MoveRight();
+	int GetWidth() { return width; }
 };
