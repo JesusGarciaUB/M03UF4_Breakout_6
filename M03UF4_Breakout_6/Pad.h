@@ -18,4 +18,5 @@ public:
 	void Update(vector<Wall> walls);
 	void MoveLeft();
 	void MoveRight();
+	int GetWidth() { return width; }
 };
