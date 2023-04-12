@@ -18,7 +18,7 @@ public:
 	Ball(Vector2 pos, Vector2 dir, int d, char c) 
 		: position(pos), direction(dir), damage(d), symbol(c) {}
 	void Bounce(Vector2 normal);
-	void Update(vector<Wall> walls, vector<Brick> bricks,Pad* pads);
+	void Update(vector<Wall> walls, vector<Brick>& bricks,Pad* pads);
 	void Render();
 	int GetDamage() { return damage; }
 	Vector2 GetDirection() { return direction; }

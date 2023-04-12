@@ -34,34 +34,38 @@ void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
 	}
 
 	//Check pads
-	//Falta comprobar els costats de les pales
-	if (pads->GetPosition() == targetPos)
+
+	Vector2 padPos = pads->GetPosition();
+	int padX = padPos.x;
+	int padY = padPos.y;
+
+	if (padPos == targetPos)
 	{
 		direction.y *= -1;
 	}
-
-	for (int x = 0; x < pads->GetWidth(); x++) {
-		if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y - (x + 1) == targetPos.y) {
-			direction.y *= -1;
-			direction.x = -1;
-		}
-
-		if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y + (x + 1) == targetPos.y) {
+	
+	for (int x = 1; x <= pads->GetWidth(); x++) {
+		if (padX == targetPos.x - x && padY == targetPos.y) {
 			direction.y *= -1;
 			direction.x = 1;
 		}
+
+		if (padX == targetPos.x + x && padY == targetPos.y) {
+			direction.y *= -1;
+			direction.x = -1;
+		}
 	}
 
-	/*
-	if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y - 1 == targetPos.y) {
-		direction.y *= -1;
-		direction.x = -1;
+	//Check bricks
+	for (auto it = bricks.begin(); it != bricks.end(); it++)
+	{
+		if (it->GetPosition() == targetPos)
+		{
+			direction.y *= -1;
+			bricks.erase(it);
+			it--;
+		}
 	}
-
-	if (pads->GetPosition().x == targetPos.x && pads->GetPosition().y + 1 == targetPos.y) {
-		direction.y *= -1;
-		direction.x = 1;
-	}*/
 
 	position = position + direction;
 }
