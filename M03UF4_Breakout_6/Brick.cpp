@@ -12,4 +12,5 @@ void Brick::Render()
 
 void Brick::TakeDamage()
 {
+	health = 0;
 }
