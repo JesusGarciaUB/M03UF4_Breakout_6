@@ -43,15 +43,17 @@ void GameManager::Gameplay()
 	Ball* ball = nullptr;
 	vector<Wall> walls;
 	vector<Brick> bricks;
+	int screenWidth = 18;
+	int screenHeight = 25;
 
-	InitGameplay(18, 25, &playerPad, &ball, walls, bricks);
+	InitGameplay(screenWidth, screenHeight, &playerPad, &ball, walls, bricks);
 
 	//--Update
 	while (gameplayRunning)
 	{
 		//--------------- UPDATE
 		ball->Update(walls, bricks, playerPad);
-		playerPad->Update(walls);
+		playerPad->Update(screenHeight);
 
 		//--------------- RENDER
 		playerPad->Render();
@@ -90,7 +92,7 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 		w.push_back(Wall(HORIZONTAL, Vector2(0, x), '|'));
 		w.push_back(Wall(HORIZONTAL, Vector2(height, x), '|'));
 	}
-	for (int x = 1; x < height - 1; x++) {
+	for (int x = 1; x < height; x++) {
 		w.push_back(Wall(VERTICAL, Vector2(x, 0), '-'));
 		w.push_back(Wall(VERTICAL, Vector2(x, width), '-'));
 	}

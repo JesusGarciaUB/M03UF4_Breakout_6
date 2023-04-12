@@ -13,14 +13,23 @@ void Pad::Render()
 	}
 }
 
-void Pad::Update(vector<Wall> walls)
+void Pad::Update(int screenWidth)
 {
-	bool pressedLeft, pressedRight;
-	pressedLeft = GetAsyncKeyState(VK_LEFT) != 0;
-	pressedRight = GetAsyncKeyState(VK_RIGHT) != 0;
+	if ((position.x - (width + 1)) > 0)
+	{
+		bool pressedLeft;
+		pressedLeft = GetAsyncKeyState(VK_LEFT) != 0;
+		if (pressedLeft) MoveLeft();
+	}
 
-	if (pressedLeft) MoveLeft();
-	else if(pressedRight) MoveRight();
+	if ((position.x + (width + 1)) < screenWidth)
+	{
+		bool pressedRight;
+		pressedRight = GetAsyncKeyState(VK_RIGHT) != 0;
+		if (pressedRight) MoveRight();
+	}
+	
+	
 }
 
 void Pad::MoveLeft()

@@ -15,7 +15,7 @@ public:
 	Pad(int w, Vector2 pos, char c) { width = w; position = pos; symbol = c; }
 	Vector2 GetPosition() { return position; }
 	void Render();
-	void Update(vector<Wall> walls);
+	void Update(int ScreenWidth);
 	void MoveLeft();
 	void MoveRight();
 };
