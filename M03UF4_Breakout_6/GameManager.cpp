@@ -105,7 +105,7 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 	}
 
 	//BALL
-	*b = new Ball(Vector2(height/2, width/2), Vector2(0, 1), 1, 'o');
+	*b = new Ball(Vector2(height/2, width/2), Vector2(1, 1), 1, 'o');
 }
 
 void GameManager::Highscore()
