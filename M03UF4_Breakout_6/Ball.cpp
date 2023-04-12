@@ -8,7 +8,7 @@ void Ball::Bounce(Vector2 normal)
 {
 }
 
-void Ball::Update(vector<Wall> walls, vector<Brick> bricks, Pad* pads)
+void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 {
 	Vector2 targetPos = position + direction;
 
