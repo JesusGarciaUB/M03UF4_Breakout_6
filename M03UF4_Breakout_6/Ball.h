@@ -13,10 +13,11 @@ private:
 	Vector2 direction;
 	int damage;
 	char symbol;
+	int health;
 public:
 	Ball();
-	Ball(Vector2 pos, Vector2 dir, int d, char c) 
-		: position(pos), direction(dir), damage(d), symbol(c) {}
+	Ball(Vector2 pos, Vector2 dir, int d, char c, int h) 
+		: position(pos), direction(dir), damage(d), symbol(c), health(h) {}
 	void Bounce(Vector2 normal);
 	void Update(vector<Wall> walls, vector<Brick>& bricks,Pad* pads);
 	void Render();
