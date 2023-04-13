@@ -25,4 +25,5 @@ public:
 	Vector2 GetDirection() { return direction; }
 	Vector2 GetPosition() { return position; }
 	void SetDirection(Vector2 n) { direction = n; }
+	int GetHealth() { return health; }
 };
