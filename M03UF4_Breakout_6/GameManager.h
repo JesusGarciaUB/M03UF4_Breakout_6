@@ -16,10 +16,11 @@ private:
 	void Gameplay();
 	void InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br);
 
+	void Credits();
 	void Highscore();
 	void CheckScore(vector<Brick> bricks);
 public:
-	enum Scene{MENU, GAMEPLAY, HIGHSCORE};
+	enum Scene{MENU, GAMEPLAY, HIGHSCORE, CREDITS};
 	Scene currentScene;
 	bool isPlaying;
 	int score = 0;

@@ -13,6 +13,9 @@ void GameManager::Update()
 	case GameManager::HIGHSCORE:
 		Highscore();
 		break;
+	case GameManager::CREDITS:
+		Credits();
+		break;
 	}
 }
 
@@ -20,17 +23,19 @@ void GameManager::Menu()
 {
 	int sleepTime = 16; //ms
 	bool keyPressed = false;
-	bool pressed1, pressed2;
+	bool pressed1, pressed2, pressed3;
 	while (!keyPressed) {
-		cout << "-----Main Menu-----\n  Press 1 to play\n  Press 2 to exit" << endl;
+		cout << "-----Main Menu-----\n  Press 1 to play\n  Press 2 to credits\n  Press 3 to exit\n" << endl;
 		pressed1 = GetAsyncKeyState('1') != 0;
 		pressed2 = GetAsyncKeyState('2') != 0;
-		keyPressed = pressed1 || pressed2;
+		pressed3 = GetAsyncKeyState('3') != 0;
+		keyPressed = pressed1 || pressed2 || pressed3;
 		Sleep(sleepTime);
 		system("cls");
 	}
 	if (pressed1) currentScene = GAMEPLAY;
-	else if (pressed2) isPlaying = false;
+	else if (pressed2) currentScene = CREDITS;
+	else if (pressed3) isPlaying = false;
 }
 
 void GameManager::Gameplay()
@@ -116,11 +121,6 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 	bricksCount = br.size();
 }
 
-void GameManager::Highscore()
-{
-	cout << "Highscore" << endl;
-}
-
 void GameManager::CheckScore(vector<Brick> bricks) {
 
 	if (bricksCount > bricks.size())
@@ -128,4 +128,17 @@ void GameManager::CheckScore(vector<Brick> bricks) {
 		score += (bricksCount - bricks.size()) * 15;
 		bricksCount = bricks.size();
 	}
+}
+
+void GameManager::Highscore()
+{
+	cout << "Highscore" << endl;
+}
+
+void GameManager::Credits()
+{
+	cout << "Jesus Garcia" << endl;
+	cout << "Francesc Verdugo" << endl;
+	system("pause");
+	currentScene = MENU;
 }
