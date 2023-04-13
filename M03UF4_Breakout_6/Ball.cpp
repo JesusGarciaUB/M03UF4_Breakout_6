@@ -69,25 +69,31 @@ void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 	auxChange = false;
 
 	//Check bricks
-	int count = 0;
+	int count;
 	int toerase;
-	bool hit = false;
-	for (auto it = bricks.begin(); it != bricks.end(); ++it)
-	{
-		if (it->GetPosition() == targetPos)
+	bool hit;
+	bool looping = true;
+	while (looping) {
+		hit = false;
+		count = 0;
+		for (auto it = bricks.begin(); it != bricks.end(); ++it)
 		{
-			direction.y *= -1;
-			hit = true;
-			auxChange = true;
-			toerase = count;
+			if (it->GetPosition() == targetPos)
+			{
+				direction.y *= -1;
+				hit = true;
+				auxChange = true;
+				toerase = count;
+			}
+			count++;
 		}
-		count++;
-	}
-	if (hit) 
-		bricks.erase(bricks.begin() + toerase);
+		if (hit)
+			bricks.erase(bricks.begin() + toerase);
 
-	if (auxChange) targetPos = position + direction;
-	auxChange = false;
+		if (auxChange) targetPos = position + direction;
+		auxChange = false;
+		looping = hit;
+	}
 
 	//Lifes
 	if (position.y > padY) {
