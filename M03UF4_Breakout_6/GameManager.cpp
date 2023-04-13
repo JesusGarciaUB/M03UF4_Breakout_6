@@ -63,7 +63,7 @@ void GameManager::Gameplay()
 		ball->Update(walls, bricks, playerPad);
 		playerPad->Update(screenHeight);
 		CheckScore(bricks);
-		WinLose(&ball, bricks);
+		WinLose(&ball, bricks, gameplayRunning);
 
 		//--------------- RENDER
 		playerPad->Render();
@@ -134,11 +134,12 @@ void GameManager::CheckScore(vector<Brick> bricks) {
 	}
 }
 
-void GameManager::WinLose(Ball** b, vector<Brick>& br)
+void GameManager::WinLose(Ball** b, vector<Brick>& br, bool& gameplayRunning)
 {
 	if (br.size() == 0)
 	{
-
+		currentScene = GAMEOVER;
+		gameplayRunning = false;
 	}
 }
 
