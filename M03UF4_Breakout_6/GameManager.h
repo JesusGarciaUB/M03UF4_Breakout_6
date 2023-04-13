@@ -12,15 +12,19 @@ using namespace std;
 class GameManager {
 private:
 	void Menu();
+	void Credits();
+	void Highscore();
 
 	void Gameplay();
 	void InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br);
 
-	void Credits();
-	void Highscore();
+	void GameOver();
+
 	void CheckScore(vector<Brick> bricks);
+	void WinLose(Ball** b, vector<Brick>& br);
+
 public:
-	enum Scene{MENU, GAMEPLAY, HIGHSCORE, CREDITS};
+	enum Scene{MENU, GAMEPLAY, HIGHSCORE, CREDITS, GAMEOVER};
 	Scene currentScene;
 	bool isPlaying;
 	int score = 0;

@@ -16,6 +16,9 @@ void GameManager::Update()
 	case GameManager::CREDITS:
 		Credits();
 		break;
+	case GameManager::GAMEOVER:
+		GameOver();
+		break;
 	}
 }
 
@@ -60,6 +63,7 @@ void GameManager::Gameplay()
 		ball->Update(walls, bricks, playerPad);
 		playerPad->Update(screenHeight);
 		CheckScore(bricks);
+		WinLose(&ball, bricks);
 
 		//--------------- RENDER
 		playerPad->Render();
@@ -130,6 +134,14 @@ void GameManager::CheckScore(vector<Brick> bricks) {
 	}
 }
 
+void GameManager::WinLose(Ball** b, vector<Brick>& br)
+{
+	if (br.size() == 0)
+	{
+
+	}
+}
+
 void GameManager::Highscore()
 {
 	cout << "Highscore" << endl;
@@ -139,6 +151,14 @@ void GameManager::Credits()
 {
 	cout << "Jesus Garcia" << endl;
 	cout << "Francesc Verdugo" << endl;
+	system("pause");
+	currentScene = MENU;
+}
+
+void GameManager::GameOver()
+{
+	cout << "GAME OVER" << endl;
+	cout << "Score: "<< score << endl;
 	system("pause");
 	currentScene = MENU;
 }
