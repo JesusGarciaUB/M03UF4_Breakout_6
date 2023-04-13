@@ -111,6 +111,9 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 
 	//BALL
 	*b = new Ball(Vector2(height/2, width/2), Vector2(1, 1), 1, 'o', 3);
+
+	//Score Set Up
+	bricksCount = br.size();
 }
 
 void GameManager::Highscore()
@@ -119,12 +122,10 @@ void GameManager::Highscore()
 }
 
 void GameManager::CheckScore(vector<Brick> bricks) {
-	int bricksCount;
-
-	if (score == 0) bricksCount = bricks.size();
 
 	if (bricksCount > bricks.size())
 	{
-
+		score += (bricksCount - bricks.size()) * 15;
+		bricksCount = bricks.size();
 	}
 }

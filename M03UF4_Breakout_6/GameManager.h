@@ -23,6 +23,7 @@ public:
 	Scene currentScene;
 	bool isPlaying;
 	int score = 0;
+	int bricksCount;
 
 	GameManager() : currentScene(MENU), isPlaying(true) {}
 	void Update();
