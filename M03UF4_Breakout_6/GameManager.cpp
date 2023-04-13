@@ -81,7 +81,7 @@ void GameManager::Gameplay()
 void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<Wall>& w, vector<Brick>& br)
 {
 	//PAD
-	*p = new Pad(1, Vector2(height / 2, width / 2 + width / 3),'-');
+	*p = new Pad(2, Vector2(height / 2, width / 2 + width / 3),'-');
 
 	//WALLS
 	w.push_back(Wall(CORNER, Vector2(0, 0), '#'));
@@ -102,7 +102,9 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 	{
 		for (int j = 1; j < height; j++)
 		{
-			br.push_back(Brick(1, Vector2(j, i), '-'));
+			if (i != 2 && j % 2 == 0 || i == 2)
+				br.push_back(Brick(1, Vector2(j, i), '-'));
+			if (i == 2) j++;
 		}
 	}
 
