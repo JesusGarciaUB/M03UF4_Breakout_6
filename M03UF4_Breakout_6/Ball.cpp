@@ -11,6 +11,7 @@ void Ball::Bounce(Vector2 normal)
 void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 {
 	Vector2 targetPos = position + direction;
+	bool auxChange = false;
 
 	//Check walls
 	for (auto it = walls.begin(); it != walls.end(); it++)
@@ -30,8 +31,13 @@ void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 				direction.y *= -1;
 				break;
 			}
+
+			auxChange = true;
 		}
 	}
+
+	if (auxChange) targetPos = position + direction;
+	auxChange = false;
 
 	//Check pads
 
@@ -42,19 +48,25 @@ void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 	if (padPos == targetPos)
 	{
 		direction.y *= -1;
+		auxChange = true;
 	}
 	
 	for (int x = 1; x <= pads->GetWidth(); x++) {
 		if (padX == targetPos.x - x && padY == targetPos.y) {
 			direction.y *= -1;
 			direction.x = 1;
+			auxChange = true;
 		}
 
 		if (padX == targetPos.x + x && padY == targetPos.y) {
 			direction.y *= -1;
 			direction.x = -1;
+			auxChange = true;
 		}
 	}
+
+	if (auxChange) targetPos = position + direction;
+	auxChange = false;
 
 	//Check bricks
 	int count = 0;
@@ -66,12 +78,22 @@ void Ball::Update(vector<Wall> walls, vector<Brick>& bricks, Pad* pads)
 		{
 			direction.y *= -1;
 			hit = true;
+			auxChange = true;
 			toerase = count;
 		}
 		count++;
 	}
 	if (hit) 
 		bricks.erase(bricks.begin() + toerase);
+
+	if (auxChange) targetPos = position + direction;
+	auxChange = false;
+
+	//Lifes
+	if (position.y > padY) {
+		position = Vector2(position.x, position.y - 10);
+		health--;
+	}
 
 	position = position + direction;
 }
