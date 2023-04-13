@@ -21,7 +21,7 @@ private:
 	void GameOver();
 
 	void CheckScore(vector<Brick> bricks);
-	void WinLose(Ball** b, vector<Brick>& br, bool& gameplayRunning);
+	void WinLose(Ball* b, vector<Brick>& br, bool& gameplayRunning);
 
 public:
 	enum Scene{MENU, GAMEPLAY, HIGHSCORE, CREDITS, GAMEOVER};
