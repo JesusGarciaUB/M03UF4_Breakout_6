@@ -100,7 +100,7 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 	//BRICKS
 	for (int i = 1; i <= 3; i++)
 	{
-		for (int j = 1; j < height - 1; j++)
+		for (int j = 1; j < height; j++)
 		{
 			br.push_back(Brick(1, Vector2(j, i), '-'));
 		}
