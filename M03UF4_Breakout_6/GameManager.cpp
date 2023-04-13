@@ -54,6 +54,7 @@ void GameManager::Gameplay()
 		//--------------- UPDATE
 		ball->Update(walls, bricks, playerPad);
 		playerPad->Update(screenHeight);
+		CheckScore(bricks);
 
 		//--------------- RENDER
 		playerPad->Render();
@@ -115,4 +116,15 @@ void GameManager::InitGameplay(int width, int height, Pad** p, Ball** b, vector<
 void GameManager::Highscore()
 {
 	cout << "Highscore" << endl;
+}
+
+void GameManager::CheckScore(vector<Brick> bricks) {
+	int bricksCount;
+
+	if (score == 0) bricksCount = bricks.size();
+
+	if (bricksCount > bricks.size())
+	{
+
+	}
 }
